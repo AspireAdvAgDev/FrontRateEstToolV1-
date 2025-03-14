@@ -164,18 +164,23 @@ export default function ModelAssumptions() {
                   <th>Variable</th>
                   <th>Action</th>
                 </tr>
-                {
-                  assumptions.map((assumption, index) => {
-                    return (
-                      <tr key={index}>
-                        <td>{index + 1}</td>
-                        <td>{assumption.fieldName}</td>
-                        <td>{assumption.variable === null ? "" : assumption.variable.toFixed(2)}</td>
-                        <td>Edit</td>
-                      </tr>
-                    )
-                  })
-                }
+{
+  assumptions.map((assumption, index) => {
+    return (
+      <tr key={index}>
+        <td>{index + 1}</td>
+        <td>{assumption.fieldName}</td>
+        <td>
+          {typeof assumption.variable === "number" && !isNaN(assumption.variable) 
+            ? assumption.variable.toFixed(2) 
+            : "N/A"}
+        </td>
+        <td>Edit</td>
+      </tr>
+    )
+  })
+}
+
               </tbody>
             </table>
           </div>
